@@ -1,0 +1,35 @@
+header{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    background: black;
+    width: 100%;
+}
+
+body{
+    margin: 0;
+    width: 100%;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    background: black;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+    padding: 10px 0;
+}
+
+.nav-link{
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 10px 30px;
+    text-decoration-line: none;
+}
+.nav-link:hover{
+    background: rgba(129, 128, 128);
+}
