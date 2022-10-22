@@ -182,3 +182,11 @@ footer{
 .nav .flex{
     flex: auto;
 }
+
+.logo{
+    font-weight: 800;
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    text-shadow: 1px 1px aquamarine;
+}
