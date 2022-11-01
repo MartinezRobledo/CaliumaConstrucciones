@@ -1,25 +1,5 @@
 <template>
     <main class="home-content">
-        <header>
-            <nav>
-                <div class="nav" style="background-color:transparent;">
-                    <div class="logo"><p>Caliuma</p></div>
-                    <input type="checkbox" id="check">
-                    <label for="check" class="bar-btn"><span class="material-icons">menu</span></label>
-                    <ul>
-                        <li><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                        <li><a class="nav-link" href="acercaDe.html">Acerca De</a></li>
-                        <li><a class="nav-link" href="proyectos.html">Proyectos</a></li>
-                        <li><a class="nav-link" href="contacto.html">Contacto</a></li>
-                    </ul>
-                    <div class="flex"></div>
-                    <div class="search-bar">
-                        <input type="text" class="input-search">
-                        <button><span class="material-icons">search</span></button>
-                    </div>
-                </div>
-            </nav>
-        </header>
         <div class="video-bg"><video src="../assets/video/video-presentacion.mp4" autoplay loop muted></video></div>
         <div class="overlay"></div>
         <div class="carrousel">
@@ -51,6 +31,39 @@
         name:'HomeComponent',
         props:[]
     }
+
+    const grande    = document.querySelector('.grande')
+    const punto     = document.querySelectorAll('.punto')
+
+// Cuando CLICK en punto
+    // Saber la posición de ese punto
+    // Aplicar un transform translateX al grande
+    // QUITAR la clase activo de TODOS puntos
+    // AÑADIR la clase activo al punto que hemos hecho CLICK
+
+// Recorrer TODOS los punto
+    punto.forEach( ( cadaPunto , i )=> {
+        // Asignamos un CLICK a cadaPunto
+        punto[i].addEventListener('click',()=>{
+
+            // Guardar la posición de ese PUNTO
+            let posicion  = i
+            // Calculando el espacio que debe DESPLAZARSE el GRANDE
+            let operacion = posicion * (-100/6)
+
+            // MOVEMOS el grand
+            grande.style.transform = `translateX(${ operacion }%)`
+
+            // Recorremos TODOS los punto
+            punto.forEach( ( cadaPunto , i )=>{
+                // Quitamos la clase ACTIVO a TODOS los punto
+                punto[i].classList.remove('activo')
+            })
+            // Añadir la clase activo en el punto que hemos hecho CLICK
+            punto[i].classList.add('activo')
+
+        })
+    })
 </script>
 
 <style>

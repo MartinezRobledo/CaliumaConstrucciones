@@ -1,20 +1,34 @@
 <template>
-  <HomeComponent msg=""/>
-  <ProyectosComponent msg=""/>
-  <ContactoComponent msg=""/>
-  <AcercaDeComponent msg=""/>
+    <header>
+        <nav>
+        <div class="nav">
+            <div class="logo"><p>Caliuma</p></div>
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn"><span class="material-icons">menu</span></label>
+            <ul>
+                <li><router-link class="nav-link active" aria-current="page" to="/">Home</router-link></li>
+                <li><router-link class="nav-link" to="acercade">Acerca De</router-link></li>
+                <li><router-link class="nav-link" to="proyectos">Proyectos</router-link></li>
+                <li><router-link class="nav-link" to="contacto">Contacto</router-link></li>
+            </ul>
+            <div class="flex"></div>
+            <div class="search-bar">
+                <input type="text" class="input-search">
+                <button><span class="material-icons">search</span></button>
+            </div>
+        </div>
+    </nav>
+    </header>
+    <div>
+        <router-view/>
+    </div>
 </template>
 
 <script>
-import HomeComponent from './components/HomeComponent.vue';
-import ContactoComponent from './components/ContactoComponent.vue';
-import ProyectosComponent from './components/ProyectosComponent.vue';
-import AcercaDeComponent from './components/AcercaDeComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HomeComponent, ContactoComponent, ProyectosComponent, AcercaDeComponent
   }
 }
 </script>

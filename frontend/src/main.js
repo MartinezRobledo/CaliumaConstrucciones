@@ -1,37 +1,38 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import { createRouter, createWebHashHistory } from "vue-router";
 
-const grande    = document.querySelector('.grande')
-    const punto     = document.querySelectorAll('.punto')
+const routes = [
+    {
+      path: "/",
+      name: "home",
+      component: ()=> import ('./components/HomeComponent.vue')
+    },
+    {
+      path: "/acercade",
+      name: "about",
+      component: ()=> import ('./components/AcercaDeComponent.vue')
+    },
+    {
+        path: "/contacto",
+        name: "contacto",
+        component: ()=> import ('./components/ContactoComponent.vue')
+      },
+      {
+        path: "/proyectos",
+        name: "proyectos",
+        component: ()=> import ('./components/ProyectosComponent.vue')
+      },
+  ];
 
-// Cuando CLICK en punto
-    // Saber la posición de ese punto
-    // Aplicar un transform translateX al grande
-    // QUITAR la clase activo de TODOS puntos
-    // AÑADIR la clase activo al punto que hemos hecho CLICK
+  const router = createRouter({
+    history: createWebHashHistory(),
+    routes
+  })
 
-// Recorrer TODOS los punto
-    punto.forEach( ( cadaPunto , i )=> {
-        // Asignamos un CLICK a cadaPunto
-        punto[i].addEventListener('click',()=>{
+const app = createApp(App)
 
-            // Guardar la posición de ese PUNTO
-            let posicion  = i
-            // Calculando el espacio que debe DESPLAZARSE el GRANDE
-            let operacion = posicion * (-100/6)
+app.use(router)
 
-            // MOVEMOS el grand
-            grande.style.transform = `translateX(${ operacion }%)`
-
-            // Recorremos TODOS los punto
-            punto.forEach( ( cadaPunto , i )=>{
-                // Quitamos la clase ACTIVO a TODOS los punto
-                punto[i].classList.remove('activo')
-            })
-            // Añadir la clase activo en el punto que hemos hecho CLICK
-            punto[i].classList.add('activo')
-
-        })
-    })
+app.mount('#app');

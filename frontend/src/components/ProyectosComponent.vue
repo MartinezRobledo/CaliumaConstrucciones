@@ -1,24 +1,4 @@
 <template>
-    <header>
-        <nav>
-            <div class="nav">
-                <div class="logo"><p>Caliuma</p></div>
-                <input type="checkbox" id="check">
-                <label for="check" class="bar-btn"><span class="material-icons">menu</span></label>
-                <ul>
-                    <li><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li><a class="nav-link" href="acercaDe.html">Acerca De</a></li>
-                    <li><a class="nav-link" href="proyectos.html">Proyectos</a></li>
-                    <li><a class="nav-link" href="contacto.html">Contacto</a></li>
-                </ul>
-                <div class="flex"></div>
-                <div class="search-bar">
-                    <input type="text" class="input-search">
-                    <button><span class="material-icons">search</span></button>
-                </div>
-            </div>
-        </nav>
-    </header>
     <main>
         <h1 class="titulo-principal"><strong>NUESTROS PROYECTOS</strong></h1>
         <section class="contenedor">
