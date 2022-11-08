@@ -6,7 +6,7 @@
             <input type="checkbox" id="check">
             <label for="check" class="bar-btn"><span class="material-icons">menu</span></label>
             <ul>
-                <li><router-link class="nav-link active" aria-current="page" to="/">Home</router-link></li>
+                <li><router-link class="nav-link" aria-current="page" to="/">Home</router-link></li>
                 <li><router-link class="nav-link" to="acercade">Acerca De</router-link></li>
                 <li><router-link class="nav-link" to="proyectos">Proyectos</router-link></li>
                 <li><router-link class="nav-link" to="contacto">Contacto</router-link></li>
@@ -22,15 +22,18 @@
     <div>
         <router-view/>
     </div>
+    <footer>
+        <p>Caliuma | Todos los derechos reservados</p>
+    </footer>
 </template>
 
 <script>
-
 export default {
   name: 'App',
   components: {
   }
 }
+
 </script>
 
 <style>
@@ -83,6 +86,9 @@ footer{
 /*HEADER*/
 header{
     width: 100%;
+    position: absolute;
+    z-index: 9;
+    top: 0;
 }
 
 .nav{
@@ -95,6 +101,11 @@ header{
     background: rgb(0, 103, 123);
     font-weight: 500;
     flex: auto;
+}
+
+nav a.router-link-exact-active {
+  color: goldenrod;
+  border: 1px solid;
 }
 
 .nav ul{
@@ -178,190 +189,6 @@ header{
 #check{
     display: none;
 }
-
-/*PROYECTOS*/
-.titulo-principal{
-    color: black;
-    text-align: center;
-    padding: 5px 1px;
-    margin: 15px;
-}
-
-.contenedor{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.contenedor figure{
-    position: relative;
-    margin-bottom: 30px;
-    height: 350px;
-    width: 500px;
-    border-radius: 6px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 500ms ease-out;
-}
-
-.contenedor figure:hover{
-    transform: scale(1.1);
-}
-
-.contenedor figure img{
-    width: 100%;
-    height: 100%;
-    transition: all 500ms ease-out;
-}
-
-.contenedor figure .capa{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 103, 123, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    text-align: center;
-    transition: all 500ms ease-out;
-}
-
-.contenedor figure:hover > .capa{
-    opacity: 1;
-    visibility: visible;
-}
-
-.contenedor figure .capa h3{
-    color: white;
-    font-weight: 600;
-    margin-bottom: 120px;
-    margin-top: 30px;
-    transition: all 500ms ease-out;
-}
-
-.contenedor figure:hover > .capa h3{
-    margin-top: 70px;
-    margin-bottom: 15px;
-}
-
-.contenedor figure .capa p{
-    color: #fff;
-    font-size: 15px;
-    line-height: 1.5;
-    width: 100%;
-    max-width: 220px;
-    margin: auto;
-}
-
-/*HOME*/
-.video-bg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.overlay{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgb(0, 103, 123);
-    opacity: 0.65;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.home-content{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    max-width: 100vw;
-}
-
-.home-content > p{
-    color: white;
-    font-size: 60px;
-    font-weight: 900;
-    border-bottom: 2px solid black;
-}
-
-/*CARRUSEL*/
-:root {
-    --negro: #393939;
-    --blanco: #ececec;
-    --sombra-ppal: #c9c9c9;
-    --sombra-sec: #ffffff;
-    --borde-negro: #00000050;
-    --marcado: rgb(127, 195, 255);
-  }
-
-.carrousel {
-    width: 50%;
-    max-width: 120em;
-    padding: 1em;
-    transition: all 0.4s ease;
-    border-radius: 1em;
-    background-color: transparent;
-    border: 10px solid transparent; 
-    border-image: linear-gradient(to bottom, rgb(0, 103, 123) 0%, white 100%) 1;
-    overflow: hidden;
-    margin: 10vh auto;
-  }
-  
-  .carrousel .grande {
-    width: 600%;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: stretch;
-    justify-content: space-around;
-    color: transparent;
-    transition: all 0.4s ease;
-    border-radius: 1em;
-    background-color: transparent;
-    transition: all 0.5s ease;
-    transform: translateX(0%);
-  }
-
-  .carrousel img{
-    height: 50vh;
-    width: 15%;
-  }
-
-  .carrousel .img {
-    transition: all 0.4s ease;
-    border-radius: 1em;
-  }
-  
-  .carrousel .puntos {
-    width: 100%;
-    margin: 1em 0 0;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .carrousel .punto {
-    width: 2em;
-    height: 2em;
-    margin: 0 0.5em;
-    color: transparent;
-    transition: all 0.4s ease;
-    border-radius: 1em;
-    background-color: var(--blanco);
-    cursor: pointer;
-    }
-  
-  .carrousel .punto.activo {
-    background-color: lightblue;
-  }
 
   /*TABLET*/
   @media(max-width: 768px){
