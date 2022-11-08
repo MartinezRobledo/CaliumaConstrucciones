@@ -22,6 +22,7 @@ import SliderComponent from './SliderComponent.vue';
 <style>
 .header{
     height: 62px;
+    background-color: transparent;
 }
 
 /*HOME*/

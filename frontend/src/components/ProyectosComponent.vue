@@ -5,49 +5,43 @@
         <figure>
             <img src="../assets/img/casa1.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 9405</h3>
+                <p>4 ambientes 94mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
         <figure>
             <img src="../assets/img/casa2.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 11502</h3>
+                <p>8 ambientes 115mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
         <figure>
             <img src="../assets/img/casa3.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 5001</h3>
+                <p>3 ambientes 80mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
         <figure>
             <img src="../assets/img/casa4.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 12007</h3>
+                <p>2 ambientes 65mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
         <figure>
             <img src="../assets/img/casa5.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 8050</h3>
+                <p>4 ambientes 80mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
         <figure>
             <img src="../assets/img/casa6.png" alt="">
             <div class="capa">
-                <h3>Titulo del Proyecto</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quod voluptatum eligendi.
-                    Eaque.</p>
+                <h3>Casa 4508</h3>
+                <p>2 ambientes 45mts^2. Esplendida casa muy amplia incluye garage</p>
             </div>
         </figure>
     </section>

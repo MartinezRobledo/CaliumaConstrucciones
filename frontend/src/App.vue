@@ -1,21 +1,16 @@
 <template>
     <header>
         <nav>
-        <div class="nav">
-            <div class="logo"><p>Caliuma</p></div>
+        <div class="nav" v-bind:style="{background: color}">
+            <router-link class="logo" to="/"><p>Caliuma</p></router-link>
             <input type="checkbox" id="check">
-            <label for="check" class="bar-btn"><span class="material-icons">menu</span></label>
+            <label for="check" class="bar-btn"><span class="material-symbols-outlined">menu</span></label>
             <ul>
-                <li><router-link class="nav-link" aria-current="page" to="/">Home</router-link></li>
-                <li><router-link class="nav-link" to="acercade">Acerca De</router-link></li>
-                <li><router-link class="nav-link" to="proyectos">Proyectos</router-link></li>
-                <li><router-link class="nav-link" to="contacto">Contacto</router-link></li>
+                <li><router-link class="nav-link" aria-current="page" to="/" @click="changeColor('transparent')">Home</router-link></li>
+                <li><router-link class="nav-link" to="acercade" @click="changeColor('rgb(0, 103, 123)')">Acerca De</router-link></li>
+                <li><router-link class="nav-link" to="proyectos" @click="changeColor('rgb(0, 103, 123)')">Proyectos</router-link></li>
+                <li><router-link class="nav-link" to="contacto" @click="changeColor('rgb(0, 103, 123)')">Contacto</router-link></li>
             </ul>
-            <div class="flex"></div>
-            <div class="search-bar">
-                <input type="text" class="input-search">
-                <button><span class="material-icons">search</span></button>
-            </div>
         </div>
     </nav>
     </header>
@@ -31,7 +26,18 @@
 export default {
   name: 'App',
   components: {
-  }
+  },
+  methods: {
+        //Al presionar el botón, emitiremos el evento changeColor y enviaremos el color seleccionado 
+        changeColor(color){
+            this.color = color;
+        }
+    },
+    data: function(){
+        return{
+            color:'transparent'
+        }
+    }
 }
 
 </script>
@@ -76,7 +82,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(0, 103, 123);
+    background: transparent;
     height: 40px;
     width: 100%;
     color: white;
@@ -103,9 +109,12 @@ header{
     flex: auto;
 }
 
-nav a.router-link-exact-active {
+nav li a.router-link-exact-active {
   color: goldenrod;
   border: 1px solid;
+}
+nav a.router-link-exact-active {
+  color: goldenrod;
 }
 
 .nav ul{
@@ -128,46 +137,6 @@ nav a.router-link-exact-active {
     transform: scale(1.05);
 }
 
-.search-bar{
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 10px;
-    gap: 5px;
-    background-color: white;
-    height: 30px;
-}
-
-.search-bar:focus-within{
-    border: 1px solid #aaa;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.search-bar input{
-    border: none;
-    outline: none;
-    flex: auto;
-    font-size: 16px;
-}
-
-.search-bar button{
-    border: none;
-    outline: none;
-    background: none;
-    cursor: pointer;
-    color: #999;
-}
-
-.search-bar button:hover{
-    color: rgb(0, 103, 123);
-}
-
-.nav .flex{
-    flex: auto;
-}
-
 .logo{
     font-weight: 800;
     font-size: 30px;
@@ -176,6 +145,7 @@ nav a.router-link-exact-active {
     margin: 0 10px;
     text-shadow: 1px 1px aquamarine;
     transition: all 500ms ease-out;
+    cursor: pointer;
 }
 
 .logo:hover{
@@ -198,9 +168,6 @@ nav a.router-link-exact-active {
     .home-content> p{
         font-size: 30px;
         font-weight: 300;
-    }
-    .search-bar{
-        display: none;
     }
     .flex{
         display: none;
