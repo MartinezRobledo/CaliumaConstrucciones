@@ -1,56 +1,67 @@
 <template>
     <div class="header"></div>
-    <h1 class="titulo-principal"><strong>NUESTROS PROYECTOS</strong></h1>
-    <section class="contenedor">
-        <figure>
-            <img src="../assets/img/casa1.png" alt="">
+    <div class="titulo-principal">
+        <h1><strong>NUESTROS PROYECTOS</strong></h1>
+    </div>
+    <div class="ubicacion">
+    <p v-show="permiso">Se muestran resultados para la zona de: {{ubicacion.display_name}}</p>
+    <button @click="obtener()">Buscar proyectos disponibles en mi zona</button>
+    </div>
+    <section class="contenedor" v-show="permiso">
+        <figure v-for="casa in slides" :key="casa.id">
+            <img :src="casa.url" :alt="casa.name">
             <div class="capa">
-                <h3>Casa 9405</h3>
-                <p>4 ambientes 94mts^2. Esplendida casa muy amplia incluye garage</p>
-            </div>
-        </figure>
-        <figure>
-            <img src="../assets/img/casa2.png" alt="">
-            <div class="capa">
-                <h3>Casa 11502</h3>
-                <p>8 ambientes 115mts^2. Esplendida casa muy amplia incluye garage</p>
-            </div>
-        </figure>
-        <figure>
-            <img src="../assets/img/casa3.png" alt="">
-            <div class="capa">
-                <h3>Casa 5001</h3>
-                <p>3 ambientes 80mts^2. Esplendida casa muy amplia incluye garage</p>
-            </div>
-        </figure>
-        <figure>
-            <img src="../assets/img/casa4.png" alt="">
-            <div class="capa">
-                <h3>Casa 12007</h3>
-                <p>2 ambientes 65mts^2. Esplendida casa muy amplia incluye garage</p>
-            </div>
-        </figure>
-        <figure>
-            <img src="../assets/img/casa5.png" alt="">
-            <div class="capa">
-                <h3>Casa 8050</h3>
-                <p>4 ambientes 80mts^2. Esplendida casa muy amplia incluye garage</p>
-            </div>
-        </figure>
-        <figure>
-            <img src="../assets/img/casa6.png" alt="">
-            <div class="capa">
-                <h3>Casa 4508</h3>
-                <p>2 ambientes 45mts^2. Esplendida casa muy amplia incluye garage</p>
+                <h3>{{casa.name}}</h3>
+                <p>{{casa.description}}</p>
             </div>
         </figure>
     </section>
 </template>
 
 <script>
+import { ref } from "vue";
     export default{
         name:'ProyectosComponent',
-        props: []
+        props: [],
+        methods:{
+            obtener(){
+                console.log(this.permiso);
+                if(!this.permiso)
+                    navigator.geolocation.getCurrentPosition(this.mostrarPosicion, this.gestionDeErrores);
+            },
+            async mostrarPosicion(posicion){
+                // this.ubicacion += "Latitud: " + posicion.coords.latitude + "\n";
+                // this.ubicacion += "Longitud: " + posicion.coords.longitude + "\n";
+                // this.ubicacion += "Exactitud: " + posicion.coords.accuracy + "\n";
+                const urlApi = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + posicion.coords.latitude + 
+                "&lon=" + posicion.coords.longitude + "&zoom=10";
+                this.ubicacion = await (await fetch(urlApi)).json();
+                console.log(this.ubicacion);
+                this.permiso = true;
+            },
+            gestionDeErrores(error){
+                this.permiso = false;
+                if(error.code == 1)
+                    alert("Debe permitir el uso de su ubicacion para ver el contenido " + error.message);
+            }
+        },
+        data:function(){
+            return{
+                permiso: false,
+                ubicacion: '',
+            }
+        },
+        setup(){
+            const slides = ref([
+                {id: 0, url: require("@/assets/img/casa1.png"), name: "Casa 9405", description: "4 ambientes 94mts^2. Esplendida casa muy amplia incluye garage"},
+                {id: 1, url: require("@/assets/img/casa2.png"), name: "Casa 11502", description: "8 ambientes 115mts^2. Esplendida casa muy amplia incluye garage"},
+                {id: 2, url: require("@/assets/img/casa3.png"), name: "Casa 5001", description: "3 ambientes 80mts^2. Esplendida casa muy amplia incluye garage"},
+                {id: 3, url: require("@/assets/img/casa4.png"), name: "Casa 12007", description: "2 ambientes 65mts^2. Esplendida casa muy amplia incluye garage"},
+                {id: 4, url: require("@/assets/img/casa5.png"), name: "Casa 8050", description: "4 ambientes 80mts^2. Esplendida casa muy amplia incluye garage"},
+                {id: 5, url: require("@/assets/img/casa6.png"), name: "Casa 4508", description: "2 ambientes 45mts^2. Esplendida casa muy amplia incluye garage"}
+            ]);
+            return {slides};
+        }
     }
 </script>
 
@@ -58,12 +69,17 @@
 .header{
     height: 62px;
 }
-    /*PROYECTOS*/
+    /*PROYECTOS*/ 
 .titulo-principal{
     color: black;
-    text-align: center;
     padding: 5px 1px;
     margin: 15px;
+    text-align: center;
+}
+
+.titulo-principal h1{
+    display: inline;
+    border-bottom: 1px solid goldenrod;
 }
 
 .contenedor{
@@ -71,6 +87,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-bottom: 1rem;
 }
 
 .contenedor figure{
@@ -133,6 +150,35 @@
     max-width: 220px;
     margin: auto;
 }
+
+.ubicacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.ubicacion p{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.ubicacion button{
+    background-color: transparent;
+    border-radius: 1px;
+    border: 1px solid goldenrod;
+    color: goldenrod;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 2px;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+.ubicacion button:hover{
+    background-color: rgba(0, 103, 123, 0.5);
+}
+
 /*TABLET*/
 @media(max-width: 768px){
     .carrousel{

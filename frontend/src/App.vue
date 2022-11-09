@@ -2,7 +2,7 @@
     <header>
         <nav>
         <div class="nav" v-bind:style="{background: color}">
-            <router-link class="logo" to="/"><p>Caliuma</p></router-link>
+            <router-link class="logo" to="/" @click="changeColor('transparent')"><p>Caliuma</p></router-link>
             <input type="checkbox" id="check">
             <label for="check" class="bar-btn"><span class="material-symbols-outlined">menu</span></label>
             <ul>
@@ -27,17 +27,21 @@ export default {
   name: 'App',
   components: {
   },
+  created(){
+    this.color = localStorage.getItem('color');
+  },
   methods: {
         //Al presionar el botón, emitiremos el evento changeColor y enviaremos el color seleccionado 
         changeColor(color){
             this.color = color;
+            localStorage.setItem('color', this.color);
         }
     },
     data: function(){
         return{
-            color:'transparent'
+            color: 'transparent'
         }
-    }
+    } 
 }
 
 </script>
@@ -109,11 +113,11 @@ header{
     flex: auto;
 }
 
-nav li a.router-link-exact-active {
+nav li .router-link-exact-active {
   color: goldenrod;
   border: 1px solid;
 }
-nav a.router-link-exact-active {
+nav .router-link-exact-active {
   color: goldenrod;
 }
 
