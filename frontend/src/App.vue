@@ -27,11 +27,15 @@ export default {
   name: 'App',
   components: {
   },
-  created(){
-    this.color = localStorage.getItem('color');
+  created: function(){
+    let dataDB = localStorage.getItem('color');
+    if(dataDB === null){
+        this.color = 'transparent'
+    }else{
+        this.color = dataDB;
+    }
   },
-  methods: {
-        //Al presionar el botón, emitiremos el evento changeColor y enviaremos el color seleccionado 
+  methods: { 
         changeColor(color){
             this.color = color;
             localStorage.setItem('color', this.color);
@@ -39,9 +43,9 @@ export default {
     },
     data: function(){
         return{
-            color: 'transparent'
+            color:''
         }
-    } 
+    }
 }
 
 </script>

@@ -159,7 +159,7 @@ import { ref } from "vue";
 }
 
 .ubicacion p{
-    font-weight: 300;
+    font-weight: 400;
     font-size: 20px;
 }
 
@@ -178,7 +178,13 @@ import { ref } from "vue";
 .ubicacion button:hover{
     background-color: rgba(0, 103, 123, 0.5);
 }
-
+/*PC MD*/
+@media(max-width: 1400px){
+    .contenedor figure{
+        width: 350px;
+        height: 320px;
+    }
+}
 /*TABLET*/
 @media(max-width: 768px){
     .carrousel{
