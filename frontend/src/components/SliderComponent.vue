@@ -8,28 +8,26 @@
         </figure>
     </div>
     <div class="slider-nav">
-        <a href="#" v-for="punto in slides.length" :key="punto" @click="moveSlider(punto)" 
-        v-bind:class="{'active':punto === puntoActivo}">{{punto}}</a>
+        <a class="slider-link" hfre="#" v-for="punto in slides.length" :key="punto"  @click="moveSlider(punto)">{{punto}}</a>
     </div>
+
 </template>
 
 <script>
 import { ref } from "vue";
+
 export default{
-        name:'ProyectosComponent',
+        name:'SliderComponent',
         mounted() {
             this.slider = this.$refs.slider;
-            this.width = this.slider.offsetWidth;
         },
         methods: {
-        moveSlider(n) {
-            this.puntoActivo = n;
-            console.log(n, this.width, this.puntoActivo);
-            this.slider.scrollTo({
-            left: this.width * (n-1),
-            behavior: 'smooth'
-            })
-        }
+            moveSlider(n) {
+                this.slider.scrollTo({
+                left: this.slider.offsetWidth * (n-1),
+                behavior: 'smooth'
+                });
+            }
         },
         setup(){
             const slides = ref([
@@ -40,9 +38,8 @@ export default{
                 {id: 4, url: require("@/assets/img/casa5.png"), name: "Casa 8050"},
                 {id: 5, url: require("@/assets/img/casa6.png"), name: "Casa 4508"}
             ]);
-            var puntoActivo = '1';
-            return {slides, puntoActivo};
-        }
+            return {slides};
+        },
 }
 </script>
 
@@ -71,6 +68,10 @@ export default{
     width: 100%;
 }
 
+.slider figure img{
+    width: 550px;
+}
+
 .slider figure .capa{
     position: absolute;
     top: 0;
@@ -95,17 +96,13 @@ export default{
     z-index: 1;
 }
 
-.slider-nav a{
-    background-color: white;
+.slider-nav .slider-link{
     text-shadow: none;
     text-decoration: none;
     color: transparent;
     border-radius: 100%;
     width: 20px;
-}
-
-.active{
-    background-color: goldenrod;
+    background: white;
 }
 
 /*TABLET*/

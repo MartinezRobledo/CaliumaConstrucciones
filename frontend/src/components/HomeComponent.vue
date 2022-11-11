@@ -4,7 +4,13 @@
         <div class="video-bg"><video src="../assets/video/video-presentacion.mp4" autoplay loop muted></video></div>
         <div class="overlay"></div>
         <p>CALIUMA CONSTRUCCIONES</p>
+        <h2>PROPIEDADES DESTACADAS</h2>
         <SliderComponent/>
+        <div class="infoban">
+            <p>Somos una Empresa conformada por un Staff de Profesionales, quienes se capacitan permanentemente con el 
+                objetivo de estar al pie de la vanguardia, que el avance tanto social como tecnológico lo requieren en 
+                la actualidad. Nos caracteriza la transparencia, la honestidad y que disfrutamos lo que hacemos.</p>
+        </div>
     </main>
 </template>
 
@@ -62,6 +68,24 @@ import SliderComponent from './SliderComponent.vue';
     font-weight: 900;
     border-bottom: 2px solid black;
     z-index: 1;
+}
+
+.home-content h2{
+    z-index: 1;
+}
+
+.infoban{
+    position: absolute;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: medium;
+    width: 100vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 40px;
 }
 
 /*TABLET*/
