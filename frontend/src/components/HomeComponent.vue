@@ -6,6 +6,25 @@
         <p>CALIUMA CONSTRUCCIONES</p>
         <h2>PROPIEDADES DESTACADAS</h2>
         <SliderComponent/>
+        <div class="team">
+            <div>
+                <h2>NUESTRO EQUIPO</h2>
+            </div>
+            <div class="empresarios">
+                <div>
+                    <img src="../assets/img/empresario_1.png" alt="">
+                    <p>Adrian Martinez</p>
+                </div>
+                <div>
+                    <img src="../assets/img/empresaria_2.png" alt="">
+                    <p>Sonia Calle</p>
+                </div>
+                <div>
+                    <img src="../assets/img/empresario_3.png" alt="">
+                    <p>Martin Iugman</p>
+                </div>
+            </div>
+        </div>
         <div class="infoban">
             <p>Somos una Empresa conformada por un Staff de Profesionales, quienes se capacitan permanentemente con el 
                 objetivo de estar al pie de la vanguardia, que el avance tanto social como tecnológico lo requieren en 
@@ -36,8 +55,8 @@ import SliderComponent from './SliderComponent.vue';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100%;
+    width: 100%;
+    height: 66%;
     z-index: -1;
     overflow: hidden;
 }
@@ -46,8 +65,8 @@ import SliderComponent from './SliderComponent.vue';
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100vw;
+    width: 100%;
+    height: 66%;
     background: rgb(0, 103, 123);
     opacity: 0.65;
     z-index: 0;
@@ -75,18 +94,50 @@ import SliderComponent from './SliderComponent.vue';
 }
 
 .infoban{
-    position: absolute;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: black;
     color: white;
     font-size: medium;
-    width: 100vw;
-    height: 10vh;
+    width: 100%;
+    height: 8%;
     justify-content: center;
     align-items: center;
     text-align: center;
-    bottom: 40px;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
 }
+
+.team{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2rem 0;
+    z-index: 1;
+}
+
+.empresarios{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1rem  0;
+}
+.empresarios img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.empresarios p{
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 
 /*TABLET*/
   @media(max-width: 768px){

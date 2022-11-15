@@ -47,13 +47,13 @@ export default{
 .slider{
     display: flex;
     height: 400px;
-    width: 40%;
+    width: 550px;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     z-index: 1;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: 10px;
     margin-top: 1rem;
 }
 
@@ -103,6 +103,7 @@ export default{
     border-radius: 100%;
     width: 20px;
     background: white;
+    cursor: pointer;
 }
 
 /*TABLET*/
